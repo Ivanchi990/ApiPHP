@@ -2,13 +2,6 @@
 
 class meme extends Methods 
 {
-    // GET meme: Obtiene memes de forma aleatoria
-    // GET meme?p=10 Obtiene 10 meme de manera aleatoria
-    // GET meme?tag=TAG Obtiene memes con ese TAG
-    // POST meme : crea un nuevo meme.
-
-    #protected  $nombre;
-    #protected  $url
 
     public function crear_meme () 
     {
@@ -31,9 +24,9 @@ class meme extends Methods
         }
         elseif(isset($_GET['tag']))
         {
-            $tag = $_GET["tag"];
+            $tag = $_GET['tag'];
 
-            $query = "SELECT * FROM memes WHERE idTag = (SELECT idTag FROM tag WHERE texto = $tag)";
+            $query = "SELECT * FROM memes m JOIN tiene t JOIN tag ta ON m.idMeme = t.idMeme AND t.idTag = ta.idTag WHERE ta.texto = '$tag'";
         }
         else
         {

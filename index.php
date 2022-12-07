@@ -7,6 +7,7 @@ session_start();
   require_once 'customers.php';
   require_once 'meme.php';
   require_once 'orders.php';
+  require_once 'tag.php';
 
   /**
    * RUN API HERE

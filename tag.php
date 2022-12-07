@@ -3,10 +3,20 @@
 class tag extends Methods 
 {
 
-
     public function obtener_tags ()
     {
-        return $_SESSION["meme_data"];
+        require("conexion.php");
+
+        $query = "SELECT * FROM tag ORDER BY idTag DESC";
+
+        $res = $conn->query($query);
+
+        while($row = $res->fetch_assoc())
+        {
+            $userData['allTags'][] = $row;
+        }
+
+        return json_encode($userData);
     }
 
     public function crear_tag () 

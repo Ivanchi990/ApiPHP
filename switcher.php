@@ -30,7 +30,7 @@ class Switcher {
         "default": "crear_meme"
       }
     },
-    "tags":{
+    "tag":{
       "GET": {
         "default": "obtener_tags"
       },

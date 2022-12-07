@@ -1,0 +1,19 @@
+# Esto te permite hacer uso del módulo mod_rewrite 
+# para poder reescribir o redireccionar URLs.
+RewriteEngine On
+# Entonces sobreescribe la URL de la siguiente forma:
+# Coge todo el fichero solicitado y se convierte, por así decirlo
+# a un parámetro de URL. Esto además añade cualquier texto
+# de la URL original como parámetros adicionales [QSA]
+# Con [L] lo que le indicas es que no siga leyendo más reglas 
+# (en caso de que sigas teniendo reglas en el .htaccess).
+# Ten en cuenta que (.+) es una expresión regular que, directamente
+# Hace match con cualquier caracter que se ingrese.
+RewriteRule ^(.+)(\?.+)?$ index.php?path=$1 [L,QSA]
+
+#Esto quiere decir, que una URL de la siguiente forma:
+#https://es.stackoverflow.com/test.php
+#Quedaría así:
+#https://es.stackoverflow.com/index.php?path=test.php
+
+

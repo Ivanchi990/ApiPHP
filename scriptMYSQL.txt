@@ -1,0 +1,23 @@
+CREATE DATABASE memes;
+
+USE memes;
+
+CREATE TABLE memes(
+idMeme int PRIMARY KEY auto_increment,
+nombre VARCHAR(300),
+titulo_superior VARCHAR(300),
+titulo_inferior VARCHAR(300),
+url VARCHAR(300)
+);
+
+
+CREATE TABLE tag(
+idTag int PRIMARY KEY auto_increment,
+texto VARCHAR(300)
+);
+
+CREATE TABLE tiene(
+idMeme int, 
+idTag int, FOREIGN KEY(idMeme) REFERENCES memes(idMeme),
+FOREIGN KEY(idTag) REFERENCES tag(idTag)
+);

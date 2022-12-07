@@ -7,11 +7,29 @@ class meme extends Methods
     {
         require("conexion.php");
 
-        $nombre = $_POST();
+        $data = json_decode(file_get_contents('php://input'), true);
 
-        $query = "INSERT INTO meme(nombre, titulo_superior, titulo_inferior, url) VALUES ()";
+        $meme = $data['meme'];
 
-        return $_SESSION["meme_data"];
+        $nombre = $meme['nombre'];
+        $url = $meme['url'];
+        $titSup = $meme['titSup'];
+        $titInf = $meme['titInf'];
+
+        $tag = $data['tag'];
+
+        $insert = "INSERT INTO memes(nombre, titulo_superior, titulo_inferior, url) VALUES ('$nombre',  '$titSup', '$titInf', '$url')";
+
+        $conn->query($insert);
+
+        foreach($tag as $t)
+        {
+            $query = "INSERT INTO tiene VALUES ((SELECT idMeme FROM memes ORDER BY idMeme DESC limit 1), (SELECT idTag FROM tag WHERE texto = '$t'))";
+
+            $conn->query($query);
+        }
+
+        return true;
     }
 
     public function obtener_memes()

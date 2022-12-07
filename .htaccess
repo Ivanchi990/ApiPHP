@@ -15,5 +15,3 @@ RewriteRule ^(.+)(\?.+)?$ index.php?path=$1 [L,QSA]
 #https://es.stackoverflow.com/test.php
 #Quedaría así:
 #https://es.stackoverflow.com/index.php?path=test.php
-
-

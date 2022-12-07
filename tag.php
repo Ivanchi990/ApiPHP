@@ -7,7 +7,9 @@ class tag extends Methods
     {
         require("conexion.php");
 
-        $query = "SELECT * FROM tag ORDER BY idTag DESC";
+        print_r($_GET);
+
+        $query = "SELECT * FROM tag ORDER BY texto DESC";
 
         $res = $conn->query($query);
 
@@ -21,8 +23,15 @@ class tag extends Methods
 
     public function crear_tag () 
     {
-        array_push($_SESSION["meme_data"], json_decode($this->data, true));
-        return $_SESSION["meme_data"];
+        require("conexion.php");
+
+        $data = json_decode(file_get_contents('php://input'), true);
+
+        $texto = $data['texto'];
+
+        $query = "INSERT INTO tag(texto) VALUES ('$texto')";
+
+        return $conn->query($query);
     }    
 }
 ?>

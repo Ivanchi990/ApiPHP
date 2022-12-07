@@ -76,23 +76,22 @@ session_start();
         $func_res = call_user_func( array($customer_functions, $func_name) );
         send_results($func_res);
         break;  
-        
+
       case "orders":
         $orders_functions = new Orders($prop, $data);
         $func_res = call_user_func( array($orders_functions, $func_name) );
         send_results($func_res);
-
         break;
+
       case "meme":
-        
         $meme_functions = new meme($prop, $data);
         $func_res = call_user_func( array($meme_functions, $func_name) );
         send_results($func_res);
         break;
 
       case "tag":
-        $tag_fuctions = new tag($prop, $data);
-        $func_res = call_user_func( array($tag_fuctions, $func_name) );
+        $tag_functions = new tag($prop, $data);
+        $func_res = call_user_func( array($tag_functions, $func_name) );
         send_results($func_res);
         break;
 

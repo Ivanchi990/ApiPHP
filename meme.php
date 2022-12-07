@@ -23,23 +23,22 @@ class meme extends Methods
     {
         require("conexion.php");
 
-        $query = "SELECT * FROM Memes ORDER BY RAND()";
-
-        $res = $conn->query($query);
-
-        while($row = $res->fetch_assoc())
+        if(isset($_GET['p']))
         {
-            $userData['allMemes'][] = $row;
+            $num = $_GET['p'];
+
+            $query = "SELECT * FROM memes ORDER BY RAND() LIMIT $num";
         }
+        elseif(isset($_GET['tag']))
+        {
+            $tag = $_GET["tag"];
 
-        return json_encode($userData);
-    }
-
-    public function get10()
-    {
-        require("conexion.php");
-
-        // $query = "SELECT * FROM Memes ORDER BY RAND() LIMIT $_GET['p']";
+            $query = "SELECT * FROM memes WHERE idTag = (SELECT idTag FROM tag WHERE texto = $tag)";
+        }
+        else
+        {
+            $query = "SELECT * FROM memes ORDER BY RAND()";
+        }
 
         $res = $conn->query($query);
 

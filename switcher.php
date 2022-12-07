@@ -24,8 +24,7 @@ class Switcher {
     },
     "meme": {
       "GET": {
-        "default": "obtener_memes",
-        "meme?p=10": "get10"
+        "default": "obtener_memes"
       },
       "POST": {
         "default": "crear_meme"

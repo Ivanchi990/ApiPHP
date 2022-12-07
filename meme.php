@@ -5,9 +5,11 @@ class meme extends Methods
 
     public function crear_meme () 
     {
-        array_push($_SESSION["meme_data"], json_decode($this->data, true));
+        require("conexion.php");
 
+        $nombre = $_POST();
 
+        $query = "INSERT INTO meme(nombre, titulo_superior, titulo_inferior, url) VALUES ()";
 
         return $_SESSION["meme_data"];
     }
